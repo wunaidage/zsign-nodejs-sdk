@@ -655,7 +655,7 @@ class ZohoSign{
 		data["templates"]=templateObj.constructJsonForSubmit();
 		let payload= new FormData();
 		payload.append('data',JSON.stringify(data));
-		payload.append('is_quicksend','true');
+		payload.append('is_quicksend', quick_send ? 'true' : 'false');
 
 		let response = await ApiClient.callSignAPI( currentUser,"/api/v1/templates/"+template_id+"/createdocument", 'POST', null, payload,null,true,false);
 		if(response["requests"]==undefined)
